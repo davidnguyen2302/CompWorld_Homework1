@@ -53,8 +53,8 @@ Animation.prototype.isDone = function () {
 }
 
 function Background(game) {
-    Entity.call(this, game, 0, 400);
-    this.radius = 200;
+	this.bgAnimation = new Animation(ASSET_MANAGER.getAsset("./img/dance-floor.png"), 0, 0, 1500, 855, 0.4, 2, true, false);
+    Entity.call(this, game, 0, 0);
 }
 
 Background.prototype = new Entity();
@@ -64,8 +64,9 @@ Background.prototype.update = function () {
 }
 
 Background.prototype.draw = function (ctx) {
-    ctx.fillStyle = "SaddleBrown";
-    ctx.fillRect(0,500,800,300);
+    //ctx.fillStyle = "SaddleBrown";
+    //ctx.fillRect(0,500,800,300);
+	this.bgAnimation.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     Entity.prototype.draw.call(this);
 }
 
@@ -75,7 +76,7 @@ function MJ(game) {
 	this.speed = 100;
 	this.jumping = false;
 	this.walking = true;
-	this.ground = 350;
+	this.ground = 400;
 	Entity.call(this, game, 0, this.ground);
 }
 
@@ -104,15 +105,15 @@ MJ.prototype.update = function () {
         this.y = this.ground - height;
     }
 	this.x += this.game.clockTick * this.speed;
-    if (this.x > 800) this.x = -230;
+    if (this.x > 1500) this.x = -130;
     Entity.prototype.update.call(this);
 }
 
 MJ.prototype.draw = function (ctx) {
 	if (this.walking) {
-        this.animation.drawFrame(this.game.clockTick, ctx, this.x, this.y, 3);
+        this.animation.drawFrame(this.game.clockTick, ctx, this.x, this.y, 5);
     } else {
-        this.jumpAnimation.drawFrame(this.game.clockTick, ctx, this.x, this.y, 3);
+        this.jumpAnimation.drawFrame(this.game.clockTick, ctx, this.x, this.y, 5);
     }
     
     Entity.prototype.draw.call(this);
@@ -122,9 +123,9 @@ MJ.prototype.draw = function (ctx) {
 
 var ASSET_MANAGER = new AssetManager();
 
-
 ASSET_MANAGER.queueDownload("./img/MJ.png");
 ASSET_MANAGER.queueDownload("./img/spin-kick.png");
+ASSET_MANAGER.queueDownload("./img/dance-floor.png");
 
 
 ASSET_MANAGER.downloadAll(function () {
