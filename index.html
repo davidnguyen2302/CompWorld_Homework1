@@ -2,6 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+input[type=text] {
+	background-color: #ff0000;
+    color: white;
+	width: 240px;
+	height: 15px;
+	font-size: 20px;
+	padding: 3px 1px;
+}
+</style>
     <meta charset="utf-8">
     <title>Game Project Shell</title>
     <script type="text/javascript" src="./gameengine.js"></script>
@@ -9,7 +19,7 @@
     <script type="text/javascript" src="./main.js"></script>
 </head>
 <body>
-	<div>Press SPACEBAR to start jumping</div>
+	<input type="text" id="instruction" value="Press SPACEBAR to Jump" disabled="true">
     <canvas id="gameWorld" tabindex="1" width="1500" height="855" style="border: 1px solid brown; background: lightskyblue"></canvas>
 </body>
 </html>
