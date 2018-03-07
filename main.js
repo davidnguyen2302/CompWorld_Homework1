@@ -72,7 +72,7 @@ Background.prototype.draw = function (ctx) {
 
 function MJ(game) {
 	this.animation = new Animation(ASSET_MANAGER.getAsset("./img/MJ.png"), 0, 0, 35.2, 82, 0.12, 8, true, false);
-    this.jumpAnimation = new Animation(ASSET_MANAGER.getAsset("./img/spin-kick.png"), 0, 0, 46, 78, 0.1, 15, true, false);
+    this.jumpAnimation = new Animation(ASSET_MANAGER.getAsset("./img/spin-kick.png"), 0, 0, 46, 78, 0.08, 15, true, false);
 	this.speed = 100;
 	this.jumping = false;
 	this.walking = true;
